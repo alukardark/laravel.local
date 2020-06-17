@@ -27,3 +27,15 @@ Route::get('/form', 'UserController@form');
 Route::post('/form-result', 'UserController@formResult');
 
 
+Route::get('/tasks', 'UserController@tasksResult');
+
+
+Route::get('/tasks/{id}', 'UserController@tasksCount');
+
+
+Route::get('/logs', 'UserController@logsResult');
+
+
+Route::get('/work', 'UserController@workResult');
+
+
