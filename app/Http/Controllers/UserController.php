@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Task;
+use App\Models\log;
 
 class UserController extends Controller
 {
@@ -29,20 +31,29 @@ class UserController extends Controller
 
     public function tasksResult()
     {
-        $tasks = \DB::table('tasks')->get();
+//        $tasks = \DB::table('tasks')->get();
+        $tasks = Task::all();
 
         return view('tasks', compact('tasks'));
     }
 
     public function tasksCount($count = null)
     {
-        \DB::table('tasks')
-            ->where('id', $count)
-            ->update(['counter' => \DB::raw('counter+1')]);
+//        \DB::table('tasks')
+//            ->where('id', $count)
+//            ->update(['counter' => \DB::raw('counter+1')]);
 
-        \DB::table('logs')->insert(array(
-            array('task_id' => $count, 'status' => 0, 'created_at' => date("Y-m-d H:i:s")),
-        ));
+        $tasksId = Task::find($count);
+        // $tasksId->counter++;
+        // $tasksId->save();
+        $tasksId->increment('counter');
+
+
+//        \DB::table('logs')->insert(array(
+//            array('task_id' => $count, 'status' => 0, 'created_at' => date("Y-m-d H:i:s")),
+//        ));
+        Log::create(['task_id' => $count, 'status' => 0, 'created_at' => date("Y-m-d H:i:s")]);
+
 
         header('Location: http://laravel.local/tasks');
         exit;
@@ -51,7 +62,8 @@ class UserController extends Controller
     public function logsResult()
     {
 
-        $logs = \DB::table('logs')->select('*')->where('status', '=', '0')->orderBy('created_at', 'desc')->get();
+//        $logs = \DB::table('logs')->select('*')->where('status', '=', '0')->orderBy('created_at', 'desc')->get();
+        $logs = Log::select('*')->status('0')->orderBy('created_at', 'desc')->get();
 
         return view('logs', compact('logs'));
 
@@ -59,10 +71,12 @@ class UserController extends Controller
 
     public function workResult()
     {
-        $work_id = \DB::table('logs')->select('id')->where('status', '=', '0')->first()->id;
+//        $work_id = \DB::table('logs')->select('id')->where('status', '=', '0')->first()->id;
+        $work_id = Log::select('id')->where('status', '=', '0')->first()->id;
 
         print_r($work_id);
-        $work = \DB::table('logs')->where('id', '=', $work_id)->update(['status' => 1]);
+//        $work = \DB::table('logs')->where('id', '=', $work_id)->update(['status' => 1]);
+        $work = Log::where('id', '=', $work_id)->update(['status' => 1]);
     }
 
 
