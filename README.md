@@ -4,9 +4,7 @@
 composer create-project --prefer-dist laravel/laravel blog
 php composer.phar create-project --prefer-dist laravel/laravel blog
 ```
-
 или глобально:
-
 ```
 composer global require laravel/installer
 laravel new blog
