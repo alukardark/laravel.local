@@ -22,9 +22,15 @@ class UserController extends Controller
         return view('form/form-page');
     }
 
-    public function formResult()
+    public function formResult(Request $request)
     {
         $my_var = 'Пример переменной';
+//        $name = $request->input('name', 'default-value');
+//        $name = $request->get('name', 'default-value');
+//        $name = $request->name;
+
+//        $name = request()->name;
+//        $name = request()->input('name', 'default-value');
 
         return view('form/form-result', compact('my_var'));
     }
