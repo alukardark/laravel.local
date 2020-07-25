@@ -12,7 +12,6 @@ composer global require laravel/installer
 laravel new blog
 ```
 
-
 ## МИГРАЦИИ
 
 - Создание новой миграции для таблицы 'tasks' (database/migrations):
@@ -57,7 +56,6 @@ php artisan migrate:reset
 php artisan migrate:rollback
 ```
 
-
 ## СИДЫ
 ```
 php artisan make:seeder UsersTableSeeder
@@ -80,7 +78,6 @@ DB::table('links')->insert([
 ``` php
 (new \MySeeder())->run();
 ```
-
 
 ## МОДЕЛИ И КОНТРОЛЛЕРЫ
 
@@ -208,7 +205,26 @@ class User extends Model{
 $user = User::active()->where('age', '>=' '18')->get();
 ```
 
-------------------------------
+
+## ВАЛИДАЦИЯ
+
+```
+php artisan make:request PostRequest
+```
+
+Внутри контроллера:
+```php
+use App\Http\Requests\PostRequest;
+function(PostRequest $request){...}
+```
+
+
+
+
+
+## 
+## 
+## 
 
 ```php
 <form action="{!! action('HomeController@edit', ['id'=>5]) !!}" method="post">

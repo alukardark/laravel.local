@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
 
 
     <!-- Styles -->
@@ -17,8 +17,14 @@
 </head>
 <body>
 
-    @yield('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @yield('content')
+            </div>
+        </div>
+    </div>
 
-    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>

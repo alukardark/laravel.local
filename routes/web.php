@@ -39,3 +39,11 @@ Route::get('/logs', 'UserController@logsResult');
 Route::get('/work', 'UserController@workResult');
 
 
+//places
+Route::get('/places', 'PlacesController@getPlaces');
+Route::get('/places/create', 'PlacesController@createPlace');
+Route::post('/places/add', 'PlacesController@addPlace');
+Route::get('/places/{id}', 'PlacesController@getPlace');
+Route::post('/places/{id}/photos/add', 'PlacesController@addPhoto');
+//Route::post('/xxx','PlacesController@addPhoto')->name('insertquotation');
+

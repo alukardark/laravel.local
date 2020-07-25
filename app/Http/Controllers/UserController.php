@@ -58,7 +58,7 @@ class UserController extends Controller
 //        \DB::table('logs')->insert(array(
 //            array('task_id' => $count, 'status' => 0, 'created_at' => date("Y-m-d H:i:s")),
 //        ));
-        Log::create(['task_id' => $count, 'status' => 0, 'created_at' => date("Y-m-d H:i:s")]);
+        Log::create(['task_id' => $count, 'status' => 0]);
 
 
         header('Location: http://laravel.local/tasks');
