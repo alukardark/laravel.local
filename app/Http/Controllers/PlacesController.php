@@ -46,7 +46,7 @@ class PlacesController extends Controller
         }
 
     }
-    public function addPhoto(PostRequest $request, $place_id)
+    public function addPhoto(Request $request, $place_id)
     {
 
         $file = $request->file('image');
